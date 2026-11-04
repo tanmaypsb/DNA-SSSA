@@ -4,6 +4,7 @@ from fastapi import HTTPException
 
 MAX_SEQUENCE_LENGTH = 2_000_000
 _ALPHABET = frozenset("ACGTN")
+_COMPLEMENT = {"A": "T", "C": "G", "G": "C", "T": "A", "N": "N"}
 
 
 def normalize_sequence(value: str) -> str:
@@ -36,3 +37,8 @@ def validate_sequence(value: str, label: str = "sequence") -> str:
             detail=f"{label} contains invalid character {invalid!r}; allowed characters are A, C, G, T, and N",
         )
     return sequence
+
+
+def reverse_complement(sequence: str) -> str:
+    """Return the DNA reverse complement in O(n) time and O(n) output space."""
+    return "".join(_COMPLEMENT[character] for character in reversed(sequence))
