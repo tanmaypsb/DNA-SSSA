@@ -9,7 +9,8 @@ class SearchRequest(BaseModel):
     model_config = ConfigDict(extra="forbid")
     text: str
     pattern: str
-    algorithms: list[Literal["naive", "kmp", "rabin_karp"]] = Field(min_length=1)
+    algorithms: list[Literal["naive", "kmp", "rabin_karp", "boyer_moore", "z_algorithm"]] = Field(min_length=1)
+    both_strands: bool = False
 
     @field_validator("algorithms")
     @classmethod
@@ -43,6 +44,51 @@ class BenchmarkRequest(BaseModel):
         if any(size < self.pattern_length for size in self.text_sizes):
             raise ValueError("each text size must be at least pattern_length")
         return self
+
+
+class AlignmentRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    seq_a: str
+    seq_b: str
+    mode: Literal["global", "local"]
+    method: Literal["full", "hirschberg"]
+    match: int = 2
+    mismatch: int = -1
+    gap_open: int = Field(default=3, gt=0)
+    gap_extend: int = Field(default=1, gt=0)
+
+    @model_validator(mode="after")
+    def validate_hirschberg_options(self):
+        if self.method == "hirschberg" and self.mode != "global":
+            raise ValueError("Hirschberg is available only for global alignment")
+        if self.method == "hirschberg" and self.gap_open != self.gap_extend:
+            raise ValueError("Hirschberg requires gap_open == gap_extend")
+        return self
+
+
+class DotplotRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    seq_a: str
+    seq_b: str
+    window: int = Field(default=1, ge=1, le=20)
+    threshold: int = Field(default=1, ge=1)
+
+    @model_validator(mode="after")
+    def threshold_fits_window(self):
+        if self.threshold > self.window:
+            raise ValueError("threshold must be between 1 and window")
+        return self
+
+
+class ReverseComplementRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    sequence: str
+
+
+class MultiSearchRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    text: str
+    patterns: list[str] = Field(min_length=1, max_length=100)
 
 
 class SearchResult(BaseModel):
