@@ -7,6 +7,8 @@ import time
 from app.algorithms.kmp import kmp_search
 from app.algorithms.naive import naive_search
 from app.algorithms.rabin_karp import rabin_karp_search
+from app.algorithms.boyer_moore import boyer_moore_search
+from app.algorithms.z_algorithm import z_search
 
 _DNA = "ACGT"
 
@@ -29,6 +31,8 @@ def run_benchmark(pattern_length: int, text_sizes: list[int], preset: str) -> di
             ("naive", naive_search),
             ("kmp", kmp_search),
             ("rabin_karp", rabin_karp_search),
+            ("boyer_moore", boyer_moore_search),
+            ("z_algorithm", z_search),
         ):
             times = []
             matches = []
