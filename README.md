@@ -1,52 +1,118 @@
-# DNA Sequence Search and Similarity Analyzer
+# 🧬 DNA-SSSA — DNA Sequence Search & Similarity Analyzer
 
-A project for searching DNA patterns, comparing sequences, and benchmarking classic string algorithms. The backend is a FastAPI service with in-memory processing; the frontend is a React workbench with Search, Similarity, and Benchmark tabs. There is no database or authentication.
+<p align="center">
+  <img src="dna-banner.png" alt="DNA-SSSA DNA Sequence Analyzer Banner" width="100%">
+</p>
 
-## Prerequisites
+<p align="center">
+  <strong>A bioinformatics platform for DNA pattern discovery, sequence similarity analysis, and algorithmic benchmarking.</strong>
+</p>
 
-- Python 3.11 or newer
-- Node.js 18 or newer, with npm
+<p align="center">
+  🌐 <a href="https://dna-sssa.pages.dev">Explore the Live Application</a>
+</p>
 
-## Setup and run on Linux
+---
 
-Run the backend and frontend in separate terminals from the project root.
+## Overview
 
-### Backend
+DNA-SSSA is a full-stack bioinformatics application designed to make DNA sequence analysis accessible through efficient pattern matching, sequence similarity computation, and algorithmic performance evaluation.
 
-```bash
-cd backend
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-uvicorn app.main:app --port 8000
-```
+The platform provides an interactive environment where users can search nucleotide patterns, compare DNA sequences, visualize algorithm performance, and explore classical computational techniques used in biological sequence processing.
 
-The API runs at `http://localhost:8000`. Keep this terminal open while using the frontend.
+The core algorithms are implemented from scratch in pure Python, emphasizing algorithmic transparency, efficiency, and practical usability.
+
+## ✨ Features
+
+- **DNA Pattern Search** — Locate nucleotide patterns using multiple string-matching algorithms.
+- **Multi-Pattern Search** — Search for multiple DNA patterns within a sequence.
+- **Sequence Similarity Analysis** — Compare DNA sequences and analyze their differences.
+- **Algorithm Benchmarking** — Evaluate and compare algorithm execution performance.
+- **FASTA Support** — Upload and analyze DNA sequences in FASTA format.
+- **Random Sequence Generation** — Generate DNA sequences for experimentation.
+- **Interactive Visualization** — Explore search results and benchmark comparisons.
+- **Reverse Strand Search** — Support searching across both DNA strands.
+
+## 🧠 Algorithms
+
+| Algorithm | Description |
+|---|---|
+| Naive String Matching | Direct character-by-character pattern search |
+| Knuth-Morris-Pratt (KMP) | Efficient pattern matching using the LPS array |
+| Rabin-Karp | Pattern matching using rolling hash |
+| Boyer-Moore | Optimized matching using character-based heuristics |
+| Z-Algorithm | Pattern matching using the Z-array |
+| Multi-Pattern Matching | Simultaneous discovery of multiple patterns |
+| Levenshtein Distance | Computes the minimum edit distance between sequences |
+| Longest Common Subsequence (LCS) | Identifies the longest common subsequence |
+
+## 🛠️ Technology Stack
 
 ### Frontend
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Recharts
 
-In a second terminal, from the project root:
+### Backend
+- Python
+- FastAPI
+- Uvicorn
+- Pydantic
 
-```bash
-cd frontend
-npm install
-npm run dev
+### Testing & Deployment
+- pytest
+- Git
+- GitHub
+- Cloudflare Pages
+- Render
+
+## 🏗️ Architecture
+
+```mermaid
+flowchart TD
+    A[User] --> B[React + TypeScript Frontend]
+    B --> C[Cloudflare Pages]
+    B --> D[FastAPI Backend]
+    D --> E[Request Validation]
+    E --> F[DNA Algorithm Engine]
+    F --> G[Pattern Matching]
+    F --> H[Similarity Analysis]
+    F --> I[Benchmarking]
+    F --> J[Sequence Alignment]
+    G --> K[Structured Results]
+    H --> K
+    I --> K
+    J --> K
+    K --> B
 ```
 
-Open the Vite URL printed in the terminal, normally `http://localhost:5173`. Requests to `/api` are proxied to the backend at `http://localhost:8000`.
+## 🎯 Purpose
 
-## Run tests
+DNA-SSSA aims to simplify DNA sequence analysis by bringing multiple computational techniques together in a single interactive platform.
 
-From the project root:
+It provides an environment for exploring nucleotide patterns, studying sequence similarities, and understanding the performance characteristics of different algorithms.
 
-```bash
-cd backend && pytest -v
-```
+## 🔮 Future Scope
 
-## Using the workbench
+- Advanced biological motif discovery
+- Support for large-scale genomic datasets
+- Improved sequence alignment strategies
+- Additional pattern-matching optimizations
+- Enhanced DNA sequence visualization
+- Integration with public genomic data sources
+- Expanded benchmarking and analytical capabilities
 
-- **Pattern search:** Enter or upload a DNA text sequence and a pattern. Choose Naive, KMP, and/or Rabin–Karp, then run the search. You can also generate random text. Results include match counts, timings, and comparisons; the text preview highlights matches. KMP displays its LPS table, and Rabin–Karp displays hash and spurious hit counts.
-- **Sequence similarity:** Enter or upload two sequences and choose Compare. The page shows Levenshtein edit distance and similarity, an alignment when available, and the length, string, and similarity of one longest common subsequence.
-- **Algorithm benchmark:** Set a pattern length and one or more text sizes, choose Random DNA or Worst case, and run the benchmark. The page plots median runtime and comparison counts for all three search algorithms and shows the underlying values in a table.
+## 🤝 Contributions
 
-The API normalizes FASTA text by removing header lines, whitespace, and lowercase differences. It accepts `A`, `C`, `G`, `T`, and `N`; invalid or empty sequences are rejected.
+Suggestions, improvements, and contributions are welcome.
+
+Feel free to report issues, propose enhancements, or contribute to the development of DNA-SSSA.
+
+---
+
+<p align="center">
+  <strong>DNA-SSSA</strong><br>
+  Making DNA sequence analysis more accessible through algorithmic computing.
+</p>
