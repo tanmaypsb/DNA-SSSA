@@ -52,7 +52,8 @@ const algorithms: { id: Algorithm; label: string; color: string }[] = [
 ]
 
 async function api<T>(url: string, init?: RequestInit): Promise<T> {
-  const response = await fetch(url, init)
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? ''
+  const response = await fetch(`${API_BASE_URL}${url}`, init)
   const body = await response.json().catch(() => ({}))
   if (!response.ok) {
     const detail = body && typeof body.detail === 'string' ? body.detail : `Request failed (${response.status})`
