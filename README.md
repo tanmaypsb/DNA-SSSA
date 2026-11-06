@@ -1,10 +1,6 @@
 # 🧬 DNA-SSSA — DNA Sequence Search & Similarity Analyzer
 
 <p align="center">
-  <img src="dna-banner.png" alt="DNA-SSSA DNA Sequence Analyzer Banner" width="100%">
-</p>
-
-<p align="center">
   <strong>A bioinformatics platform for DNA pattern discovery, sequence similarity analysis, and algorithmic benchmarking.</strong>
 </p>
 
