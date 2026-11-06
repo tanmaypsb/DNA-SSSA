@@ -1,6 +1,6 @@
 # DNA Sequence Search and Similarity Analyzer
 
-A small DAA lab project for searching DNA patterns, comparing sequences, and benchmarking classic string algorithms. The backend is a FastAPI service with in-memory processing; the frontend is a React workbench with Search, Similarity, and Benchmark tabs. There is no database or authentication.
+A project for searching DNA patterns, comparing sequences, and benchmarking classic string algorithms. The backend is a FastAPI service with in-memory processing; the frontend is a React workbench with Search, Similarity, and Benchmark tabs. There is no database or authentication.
 
 ## Prerequisites
 
