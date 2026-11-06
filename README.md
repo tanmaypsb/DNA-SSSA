@@ -109,6 +109,6 @@ Feel free to report issues, propose enhancements, or contribute to the developme
 ---
 
 <p align="center">
-  <strong>DNA-SSSA</strong><br>
+  <strong>By - Tanmay Pratap Singh</strong><br>
   Making DNA sequence analysis more accessible through algorithmic computing.
 </p>
